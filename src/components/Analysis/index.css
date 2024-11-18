@@ -1,0 +1,107 @@
+.analysis-loading-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.analysis-container {
+  background-color: #0f172a;
+  min-height: 100vh;
+  padding: 30px;
+  /* height: 100vh; */
+}
+
+.linear-chart-container {
+  /* background-color; */
+  background: rgba(19, 34, 64, 1);
+  border-radius: 10px;
+  border-style: solid;
+  border: none;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+  /* border-color: rgba(59, 130, 246, 1); */
+  margin-top: 30px;
+  width: 1200px;
+  height: 380px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+@media screen and (max-width: 768px) {
+  .linear-chart-container {
+    /* width: 400px;
+     */
+    display: none;
+  }
+}
+
+.analysis-main-heading {
+  font-family: 'Roboto';
+  color: #ffffff;
+  margin-left: 165px;
+  margin-top: 60px;
+}
+
+.linear-chart-div-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.commits-per-repo-heading {
+  font-family: 'Roboto';
+  color: #ffffff;
+  margin-left: 30%;
+}
+
+.lang-per-commit-heading {
+  font-family: 'Roboto';
+  color: #ffffff;
+}
+
+.lang-per-repos-heading {
+  font-family: 'Roboto';
+  color: #ffffff;
+}
+
+.lang-per-repo-container {
+  margin-left: 50px;
+}
+.language-piechart-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
+
+@media screen and (max-width: 768px) {
+  .language-piechart-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 300x;
+  }
+}
+
+.lang-per-commit-container {
+  margin-left: 30%;
+}
+
+.commits-per-repo-container {
+  /* margin-top: 50px; */
+  width: 500px;
+  margin-left: 30%;
+  /* margin-left: 120px;
+   */
+}
+@media screen and (max-width: 768px) {
+  .sm-analysis-div-container {
+    width: 300px;
+  }
+}
