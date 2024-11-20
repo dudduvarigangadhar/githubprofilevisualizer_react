@@ -36,13 +36,25 @@ class Header extends Component {
             <div className="menu-list-container">
               <ul className="list-container">
                 <Link to="/" className="list-item-link">
-                  <li className="home">Home </li>
+                  <li>
+                    <button type="button" className="nav-button">
+                      Home{' '}
+                    </button>
+                  </li>
                 </Link>
                 <Link to="/repositories" className="list-item-link">
-                  <li className="repository">Repositories</li>
+                  <li>
+                    <button type="button" className="nav-button">
+                      Repositories
+                    </button>
+                  </li>
                 </Link>
                 <Link to="/analysis" className="list-item-link">
-                  <li className="">Analysis</li>
+                  <li>
+                    <button type="button" className="nav-button">
+                      Analysis
+                    </button>
+                  </li>
                 </Link>
               </ul>
             </div>
@@ -55,13 +67,25 @@ class Header extends Component {
             </Link>
             <ul className="categories">
               <Link to="/" className="list-item-link">
-                <li className="home">Home</li>
+                <li className="home">
+                  <button type="button" className="nav-button">
+                    Home
+                  </button>
+                </li>
               </Link>
               <Link to="/repositories" className="list-item-link">
-                <li className="repository">Repositories</li>
+                <li className="repository">
+                  <button type="button" className="nav-button">
+                    Repositories
+                  </button>
+                </li>
               </Link>
               <Link to="/analysis" className="list-item-link">
-                <li className="analysis">Analysis</li>
+                <li className="analysis">
+                  <button type="button" className="nav-button">
+                    Analysis
+                  </button>
+                </li>
               </Link>
             </ul>
           </nav>

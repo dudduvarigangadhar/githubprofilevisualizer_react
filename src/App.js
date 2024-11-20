@@ -5,7 +5,7 @@ import AnalysisContainer from './components/AnalysisContainer'
 import Home from './components/Home'
 import NotFound from './components/NotFound'
 
-import Repository from './components/Repository'
+import RepositoryContainer from './components/RepositoryContainer'
 import './App.css'
 import ProfileContext from './ProfileContext'
 import RepoItemDetailsContainer from './components/RepoItemDetailsContainer'
@@ -28,7 +28,7 @@ const App = () => {
     >
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/repositories" component={Repository} />
+        <Route exact path="/repositories" component={RepositoryContainer} />
 
         <Route
           exact

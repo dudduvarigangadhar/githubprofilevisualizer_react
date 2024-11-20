@@ -1,4 +1,3 @@
-import './index.css'
 import ProfileContext from '../../ProfileContext'
 import Analysis from '../Analysis'
 

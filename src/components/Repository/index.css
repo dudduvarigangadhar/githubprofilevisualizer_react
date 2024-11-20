@@ -20,8 +20,7 @@
 
 .repos-list-item {
   list-style-type: none;
-  /* background: rgba(255, 255, 255, 0.06);
-   */
+
   background-color: #ffffff0f;
 
   height: 250px;
@@ -70,6 +69,34 @@
 .repo-list-item-container {
   text-decoration: none;
 }
+@media screen and (min-width: 768px) {
+  .repos-list-item {
+    margin-left: 7%;
+  }
+}
+
+.repo-item-details-failure {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  height: 100vh;
+  text-align: center;
+}
+
+.repo-item-details-failure-inner-div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.failure-view-message {
+  font-family: 'Roboto';
+  font-size: 25px;
+  font-weight: 500;
+  color: #ffffff;
+}
 
 .language-name {
   font-weight: bold;
@@ -84,4 +111,44 @@
 .languages-list {
   display: flex;
   flex-direction: row;
+}
+
+.goto-home-button {
+  background-color: #ffffff;
+  border: none;
+  color: #414038;
+  width: 120px;
+  height: 30px;
+}
+
+.noDataFoundContainer {
+  height: 90vh;
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nodata-heading {
+  font-family: 'Roboto';
+  color: #f8fafc;
+  text-align: center;
+  font-weight: 400;
+}
+
+.nodata-description {
+  font-family: 'Roboto';
+  text-align: center;
+  margin-top: 0px;
+  color: rgba(248, 250, 252, 1);
+}
+
+@media screen and (max-width: 768px) {
+  .nodata-description {
+    width: 300px;
+  }
+
+  .repo-no-data-img {
+    width: 300px;
+  }
 }

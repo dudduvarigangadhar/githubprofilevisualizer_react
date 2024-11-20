@@ -2,7 +2,6 @@ import {Component} from 'react'
 
 import Loader from 'react-loader-spinner'
 import './index.css'
-import ProfileContext from '../../ProfileContext'
 import Header from '../Header'
 import Languages from '../Languages'
 import Contributors from '../Contributors'
@@ -71,7 +70,7 @@ class RepoItemDetails extends Component {
   getRepoDetails = async () => {
     this.setState({apiStatus: apiConstants.inProgress})
     const {username, repoName} = this.props
-    console.log('username', username)
+
     const options = {
       method: 'GET',
     }
@@ -112,8 +111,6 @@ class RepoItemDetails extends Component {
         owner: this.getOwner(data.owner),
         watchersCount: data.watchers_count,
       }
-      console.log('updated: ', updatedData)
-      console.log('name', updatedData.name)
       this.setState({
         apiStatus: apiConstants.success,
         repoItemDetailsList: updatedData,
@@ -138,7 +135,6 @@ class RepoItemDetails extends Component {
   }
 
   repoItemDetailsSuccess = () => {
-    // console.log(this.repoItemDetailsList)
     const {repoItemDetailsList} = this.state
     const {
       name,
@@ -149,15 +145,12 @@ class RepoItemDetails extends Component {
       watchersCount,
       issuesCount,
       contributors,
-      owner,
     } = repoItemDetailsList
-    const {avatarUrl, login} = owner
     const contributorLength = contributors.length
     return (
       <div className="repoItemDetails-success-view">
         <div>
           <h1 className="repoItemDetails-main-heading">{name}</h1>
-          {/* <img src={avatarUrl} alt={login} /> */}
         </div>
         <p>{description}</p>
         <div className="repoItemDetails-languages-container">

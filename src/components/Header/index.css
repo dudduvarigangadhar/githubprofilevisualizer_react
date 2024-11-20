@@ -10,15 +10,8 @@
   padding-top: 32px;
 }
 
-@media screen and (max-width: 768px) {
-  .header-container {
-    display: ;
-  }
-}
 .link-to-headingRoute {
   text-decoration: none;
-}
-@media screen and (max-width: 768px) {
 }
 
 .sm-sr-heading-container {
@@ -87,17 +80,27 @@
 
 .menu-list-container {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.nav-button {
+  border: none;
+  background-color: transparent;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 .list-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  margin-bottom: 0px;
+  justify-content: flex-start;
+  align-items: flex-start;
+  /* margin-bottom: 0px;
+   */
+  padding: 0px;
+  list-style-type: none;
 }
 @media screen and (min-width: 768px) {
   .menu-container {

@@ -1,5 +1,6 @@
 import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+import {Link} from 'react-router-dom'
 import LinearChart from '../LinearChart'
 import LanguageRepoCountPie from '../LangRepoCountPie'
 import LanguageCommitCountPie from '../LangCommitCountPie'
@@ -18,38 +19,28 @@ class Analysis extends Component {
   state = {apiStatus: apiConstants.initial, analysisData: {}}
 
   componentDidMount() {
-    this.getAnalysisData()
+    const {username} = this.props
+    if (username === '') {
+      this.renderNoDataFound()
+    } else {
+      this.getAnalysisData()
+    }
   }
 
   getAnalysisData = async () => {
-    // console.log(this.props)
-    console.log('analysis data')
-    this.setState({apiStatus: apiConstants.inProgress})
     const {username} = this.props
-    // api url
+    this.setState({apiStatus: apiConstants.inProgress})
+    //apiurl
     const options = {
       method: 'GET',
     }
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
-      //   const datasets: {
-      //     label: 'Commits Per Quarter',
-      //     // data: [0, 2, 6, 4, 8, 4, 2, 3, 2, 4, 2], // Example data points
-      //     borderColor: '#56A6FF', // Line color
-      //     backgroundColor: 'rgba(86, 166, 255, 0.2)', // Fill color
-      //     pointBackgroundColor: '#56A6FF', // Point color
-      //     pointBorderColor: '#56A6FF', // Point border
-      //     pointRadius: 4, // Size of the points
-      //     borderWidth: 2, // Thickness of the line
-      //   }
 
-      //   data = [...data, datasets]
-      //   const updatedData = data
       this.setState({
-        apiStatus: apiConstants.success,
         analysisData: data,
+        apiStatus: apiConstants.success,
       })
     } else {
       this.setState({apiStatus: apiConstants.failure})
@@ -64,20 +55,41 @@ class Analysis extends Component {
     </div>
   )
 
+  renderNoDataFound = () => (
+    <div className="analysis-render-no-data-found">
+      <img
+        src="https://res.cloudinary.com/diqwk5cdp/image/upload/v1732070791/Empty_Box_Illustration_1_dfkrvg.png"
+        alt="empty analysis"
+        className="analysis-no-data"
+      />
+      <h1 className="analysis-page-not-found-heading">No Data Found</h1>
+      <p className="analysis-page-not-found-description">
+        Github Username is empty. please provide a valid username for
+        Repositories
+      </p>
+      <Link to="/">
+        <button
+          type="button"
+          className="analysis-go-to-home"
+          onClick={this.onClickGotoHome}
+        >
+          Go to Home
+        </button>
+      </Link>
+    </div>
+  )
+
   analysisSuccessView = () => {
     const {analysisData} = this.state
-    // const {langRepoCount} = analysisData
+
     const analysisListLength = Object.keys(analysisData).length === 0
 
     const {
-      user,
       quarterCommitCount,
       langRepoCount,
       langCommitCount,
       repoCommitCount,
     } = analysisData
-
-    const {avatarUrl, login} = user
 
     const quarterCommitData = []
     const quarterCommitKeyNames = Object.keys(quarterCommitCount)
@@ -91,11 +103,7 @@ class Analysis extends Component {
     const quarterCommitSlicedData = quarterCommitData
       .sort(this.descendingSort)
       .slice(0, Object.keys(quarterCommitCount).length)
-    // console.log(quarterCommitSlicedData)
 
-    // const labels = Object.keys(langRepoCount)
-    // const data = Object.values(langRepoCount)
-    // console.log(labels, data)
     const langRepoData = []
     const langRepoKeyNames = Object.keys(langRepoCount)
     langRepoKeyNames.forEach(keyName => {
@@ -104,7 +112,6 @@ class Analysis extends Component {
     const langRepoSlicedData = langRepoData
       .sort(this.descendingSort)
       .slice(0, Object.keys(langRepoCount).length)
-    // console.log(langRepoSlicedData)
 
     const langCommitData = []
     const langCommitKeyNames = Object.keys(langCommitCount)
@@ -127,9 +134,14 @@ class Analysis extends Component {
       <>
         <div>
           {analysisListLength ? (
-            <div>
-              <img src="" alt="no analysis" />
-              <h1>No Analysis Data Found!</h1>
+            <div className="no-analysis-data-found">
+              <>
+                <img
+                  src="https://res.cloudinary.com/diqwk5cdp/image/upload/v1730975419/Layer_3_unz7cw.png"
+                  alt="no analysis"
+                />
+                <h1>No Analysis Data Found!</h1>
+              </>
             </div>
           ) : (
             <div className="sm-analysis-div-container">
@@ -155,15 +167,13 @@ class Analysis extends Component {
                   />
                 </div>
               </div>
-              <div>
-                <div>
+              <div className="repoCommitDescContainer">
+                <div className="repoCommitContainer">
                   <h1 className="commits-per-repo-heading">
                     Commits per Repo (Top 10)
                   </h1>
-                  <br />
-                  <div className="commits-per-repo-container">
-                    <RepoCommitCountPie repoCommitCount={slicedData} />
-                  </div>
+
+                  <RepoCommitCountPie repoCommitCount={slicedData} />
                 </div>
               </div>
             </div>
@@ -173,7 +183,27 @@ class Analysis extends Component {
     )
   }
 
-  analysisFailureView = () => {}
+  onClickTryAgain = () => {
+    this.getAnalysisData()
+  }
+
+  analysisFailureView = () => (
+    <div className="analysisFailureContainer">
+      <img
+        src="https://res.cloudinary.com/diqwk5cdp/image/upload/v1730787654/Frame_8830_uvuzht.png"
+        alt="failure view"
+        className="error-view"
+      />
+      <p className="errorName">Something went wrong. Please try again</p>
+      <button
+        className="tryButton"
+        type="button"
+        onClick={this.onClickTryAgain}
+      >
+        Try again
+      </button>
+    </div>
+  )
 
   renderAnalysisView = () => {
     const {apiStatus} = this.state
@@ -190,10 +220,15 @@ class Analysis extends Component {
   }
 
   render() {
+    const {username} = this.props
     return (
       <div className="analysis-container">
         <Header />
-        <div>{this.renderAnalysisView()}</div>
+        <div>
+          {username === ''
+            ? this.renderNoDataFound()
+            : this.renderAnalysisView()}
+        </div>
       </div>
     )
   }

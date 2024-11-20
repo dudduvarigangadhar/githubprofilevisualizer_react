@@ -14,9 +14,8 @@ const apiConstantStatus = {
 }
 
 const Home = () => {
-  //   const [username, setUsername] = useState('')
   const [search, setSearch] = useState(false)
-  //   const [invalid, setInvalid] = useState(false)
+
   const [apiStatus, setApiStatus] = useState(apiConstantStatus.initial)
   const [loading, setLoading] = useState(false)
   const [userData, setUserData] = useState([])
@@ -143,24 +142,7 @@ const Home = () => {
     </div>
   )
 
-  const inValidUserView = () => console.log('invalid view')
-  // <div>
-  //   <img
-  //     src="https://res.cloudinary.com/diqwk5cdp/image/upload/v1730787654/Frame_8830_uvuzht.png"
-  //     alt="invalid user"
-  //     className="invalidUser-img"
-  //   />
-  //   <h1 className="invalidUsername-message">
-  //     Something went wrong. Please try again
-  //   </h1>
-  //   <button type="button" className="tryAgain-button">
-  //     Try again
-  //   </button>
-  // </div>
-
-  //   const onChangeUsername = event => {
-  //     setUsername(event.target.value)
-  //   }
+  //   const inValidUserView = () => console.log('invalid view')
 
   const getUserDetails = async () => {
     setLoading(true)
@@ -171,7 +153,6 @@ const Home = () => {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const fetchedData = await response.json()
-      //   console.log(fetchedData)
 
       const updatedData = {
         avatarUrl: fetchedData.avatar_url,
@@ -210,15 +191,9 @@ const Home = () => {
       setUserData(updatedData)
       setLoading(false)
       setApiStatus(apiConstantStatus.success)
-
-      //   console.log(updatedData)
     } else if (response.status === 400) {
-      //   console.log(400)
-      //   setInvalid(true)
       setApiStatus(apiConstantStatus.inValidView)
     }
-    // const responseData = response.json()
-    // console.log(responseData)
   }
 
   const onClickSearch = () => {
@@ -232,8 +207,6 @@ const Home = () => {
     }
   }, [search])
 
-  //   console.log('userdata', userData)
-
   const renderUserViews = () => {
     switch (apiStatus) {
       case apiConstantStatus.initial:
@@ -245,8 +218,8 @@ const Home = () => {
       case apiConstantStatus.failure:
         return userFailureView()
 
-      case apiConstantStatus.inValidView:
-        return inValidUserView()
+      //   case apiConstantStatus.inValidView:
+      //     return inValidUserView()
       case apiConstantStatus.in_progress:
         return loadingView()
 

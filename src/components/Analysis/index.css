@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .analysis-container {
@@ -10,6 +11,58 @@
   min-height: 100vh;
   padding: 30px;
   /* height: 100vh; */
+}
+
+.analysisFailureContainer {
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.tryButton {
+  width: 120px;
+  background-color: rgba(59, 130, 246, 1);
+  color: #ffffff;
+  border-radius: 5px;
+  border: none;
+}
+
+.analysis-page-not-found-heading {
+  font-family: 'Roboto';
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.analysis-page-not-found-description {
+  color: rgba(148, 163, 184, 1);
+  font-family: 'Roboto';
+}
+
+.analysis-no-data {
+  height: 300px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.analysis-render-no-data-found {
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.analysis-go-to-home {
+  height: 30px;
+  width: 120px;
+}
+
+.errorName {
+  font-family: 'Roboto';
+  color: #ffffff;
 }
 
 .linear-chart-container {
@@ -52,11 +105,19 @@
   justify-content: center;
   align-items: center;
 }
+/* @media screen and (min-width: 768px) {
+  .commits-per-repo-heading {
+    font-family: 'Roboto';
+    color: #ffffff;
+    /* margin-left: 30%; */
+/* } */
+/* } */
 
 .commits-per-repo-heading {
   font-family: 'Roboto';
   color: #ffffff;
-  margin-left: 30%;
+  font-size: 20px;
+  text-align: center;
 }
 
 .lang-per-commit-heading {
@@ -64,33 +125,60 @@
   color: #ffffff;
 }
 
+@media screen and (max-width: 768px) {
+  .lang-per-commit-heading {
+    font-size: 23px;
+    margin-bottom: 0px;
+  }
+}
+
 .lang-per-repos-heading {
   font-family: 'Roboto';
   color: #ffffff;
 }
 
-.lang-per-repo-container {
-  margin-left: 50px;
+@media screen and (max-width: 768px) {
+  .lang-per-repos-heading {
+    font-size: 23px;
+  }
 }
+@media screen and (min-width: 768px) {
+  .lang-per-repo-container {
+    margin-left: 20%;
+  }
+}
+
+/* .lang-per-repo-container {
+  margin-bottom: 0px; */
+/* } */
+
 .language-piechart-container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 1200px;
+  justify-content: flex-start;
+  width: 70%;
+  /* align-items: center; */
+  /* width: 1200px; */
 }
 
 @media screen and (max-width: 768px) {
   .language-piechart-container {
     display: flex;
     flex-direction: column;
-
-    width: 300x;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    /* width: 300x; */
+  }
+}
+@media screen and (min-width: 768px) {
+  .lang-per-commit-container {
+    margin-left: 30%;
   }
 }
 
 .lang-per-commit-container {
-  margin-left: 30%;
+  margin: 0px;
 }
 
 .commits-per-repo-container {
@@ -103,5 +191,48 @@
 @media screen and (max-width: 768px) {
   .sm-analysis-div-container {
     width: 300px;
+  }
+}
+
+.repoCommitDescContainer {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .repoCommitDescContainer {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 40px;
+  }
+}
+
+.no-analysis-data-found {
+  height: 100vh;
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.repoCommitContainer {
+  width: 100%;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;  */
+}
+
+@media screen and (min-width: 768px) {
+  .repoCommitContainer {
+    width: 40%;
   }
 }

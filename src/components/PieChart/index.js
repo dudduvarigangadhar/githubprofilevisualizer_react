@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import {PieChart, Pie, ResponsiveContainer, Cell, Legend} from 'recharts'
 
 // const COLORS = ['#0088FE', '#00C49F', '#FFBB28']
